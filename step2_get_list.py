@@ -8,11 +8,11 @@ if __name__ == '__main__':
 
     data_path = './augmentation_vtk_data/'
     output_path = './'
-    num_augmentations = 20
+    num_augmentations = 5
     train_size = 0.8
     with_flip = True
 
-    num_samples = 36 # define number of samples
+    num_samples = 20 # define number of samples
     sample_list = list(range(1, num_samples+1))
     sample_name = 'A{0}_Sample_0{1}_d.vtp'
 
@@ -48,7 +48,7 @@ if __name__ == '__main__':
                 subject_name = 'A{}_Sample_0{}_d.vtp'.format(i_aug, i_sample)
                 train_name_list.append(os.path.join(data_path, subject_name))
                 if with_flip:
-                    subject2_name = 'A{}_Sample_0{}_d.vtp'.format(i_aug, i_sample+1000)
+                    subject2_name = 'A{}_Sample_0{}_d.vtp'.format(i_aug +1000, i_sample)
                     train_name_list.append(os.path.join(data_path, subject2_name))
 
         with open(os.path.join(output_path, 'train_list_{0}.csv'.format(i_cv)), 'w') as file:
@@ -63,7 +63,7 @@ if __name__ == '__main__':
                 subject_name = 'A{}_Sample_0{}_d.vtp'.format(i_aug, i_sample)
                 val_name_list.append(os.path.join(data_path, subject_name))
                 if with_flip:
-                    subject2_name = 'A{}_Sample_0{}_d.vtp'.format(i_aug, i_sample+1000)
+                    subject2_name = 'A{}_Sample_0{}_d.vtp'.format(i_aug+1000, i_sample)
                     val_name_list.append(os.path.join(data_path, subject2_name))
 
         with open(os.path.join(output_path, 'val_list_{0}.csv'.format(i_cv)), 'w') as file:
